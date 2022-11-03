@@ -10,8 +10,8 @@ const { BadRequestError, NotFoundError } = require("../expressError");
 router.get('/', async function (req, res) {
   const results = await db.query(
     `SELECT code, name
-      FROM companies`
-    // TODO: order by code
+      FROM companies
+      ORDER BY code`
   );
 
   const companies = results.rows;
@@ -26,8 +26,7 @@ router.get('/:code', async function (req, res) {
     `
     SELECT code, name, description
       FROM companies
-        WHERE code IN ($1)`,
-    // TODO: change to =
+        WHERE code = $1`,
     [code]
   );
 
