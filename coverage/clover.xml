@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1667522296788" clover="3.2.0">
-  <project timestamp="1667522296788" name="All files">
-    <metrics statements="107" coveredstatements="30" conditionals="48" coveredconditionals="2" methods="16" coveredmethods="3" elements="171" coveredelements="35" complexity="0" loc="107" ncloc="107" packages="1" files="2" classes="2"/>
-    <file name="companies.js" path="/home/mtbocim/Rithm_exercises/biztime/routes/companies.js">
-      <metrics statements="46" coveredstatements="20" conditionals="18" coveredconditionals="2" methods="8" coveredmethods="3"/>
+<coverage generated="1667523410414" clover="3.2.0">
+  <project timestamp="1667523410414" name="All files">
+    <metrics statements="107" coveredstatements="52" conditionals="48" coveredconditionals="14" methods="16" coveredmethods="7" elements="171" coveredelements="73" complexity="0" loc="107" ncloc="107" packages="1" files="2" classes="2"/>
+    <file name="companies.js" path="/Users/ashleymathew/rithm/exercises/Week 6/express-biztime/routes/companies.js">
+      <metrics statements="46" coveredstatements="42" conditionals="18" coveredconditionals="14" methods="8" coveredmethods="7"/>
       <line num="4" count="1" type="stmt"/>
       <line num="6" count="1" type="stmt"/>
       <line num="7" count="1" type="stmt"/>
@@ -21,29 +21,29 @@
       <line num="47" count="1" type="stmt"/>
       <line num="49" count="1" type="stmt"/>
       <line num="54" count="1" type="stmt"/>
-      <line num="56" count="0" type="cond" truecount="0" falsecount="2"/>
-      <line num="58" count="0" type="stmt"/>
-      <line num="59" count="0" type="stmt"/>
-      <line num="61" count="0" type="cond" truecount="0" falsecount="4"/>
-      <line num="62" count="0" type="stmt"/>
-      <line num="64" count="0" type="stmt"/>
-      <line num="67" count="0" type="stmt"/>
-      <line num="68" count="0" type="stmt"/>
-      <line num="77" count="0" type="stmt"/>
-      <line num="79" count="0" type="stmt"/>
+      <line num="56" count="2" type="cond" truecount="1" falsecount="1"/>
+      <line num="58" count="2" type="stmt"/>
+      <line num="59" count="2" type="stmt"/>
+      <line num="61" count="2" type="cond" truecount="4" falsecount="0"/>
+      <line num="62" count="3" type="stmt"/>
+      <line num="64" count="1" type="stmt"/>
+      <line num="67" count="1" type="stmt"/>
+      <line num="68" count="1" type="stmt"/>
+      <line num="77" count="1" type="stmt"/>
+      <line num="79" count="1" type="stmt"/>
       <line num="85" count="1" type="stmt"/>
-      <line num="86" count="0" type="cond" truecount="0" falsecount="2"/>
-      <line num="88" count="0" type="stmt"/>
-      <line num="89" count="0" type="stmt"/>
-      <line num="91" count="0" type="cond" truecount="0" falsecount="4"/>
-      <line num="92" count="0" type="stmt"/>
-      <line num="94" count="0" type="stmt"/>
-      <line num="97" count="0" type="stmt"/>
-      <line num="98" count="0" type="stmt"/>
-      <line num="99" count="0" type="stmt"/>
-      <line num="108" count="0" type="stmt"/>
-      <line num="109" count="0" type="cond" truecount="0" falsecount="2"/>
-      <line num="110" count="0" type="stmt"/>
+      <line num="86" count="3" type="cond" truecount="1" falsecount="1"/>
+      <line num="88" count="3" type="stmt"/>
+      <line num="89" count="3" type="stmt"/>
+      <line num="91" count="3" type="cond" truecount="4" falsecount="0"/>
+      <line num="92" count="5" type="stmt"/>
+      <line num="94" count="1" type="stmt"/>
+      <line num="97" count="2" type="stmt"/>
+      <line num="98" count="2" type="stmt"/>
+      <line num="99" count="2" type="stmt"/>
+      <line num="108" count="2" type="stmt"/>
+      <line num="109" count="2" type="cond" truecount="2" falsecount="0"/>
+      <line num="110" count="1" type="stmt"/>
       <line num="115" count="1" type="stmt"/>
       <line num="117" count="0" type="stmt"/>
       <line num="118" count="0" type="stmt"/>
@@ -51,7 +51,7 @@
       <line num="126" count="0" type="stmt"/>
       <line num="131" count="1" type="stmt"/>
     </file>
-    <file name="invoices.js" path="/home/mtbocim/Rithm_exercises/biztime/routes/invoices.js">
+    <file name="invoices.js" path="/Users/ashleymathew/rithm/exercises/Week 6/express-biztime/routes/invoices.js">
       <metrics statements="61" coveredstatements="10" conditionals="30" coveredconditionals="0" methods="8" coveredmethods="0"/>
       <line num="4" count="1" type="stmt"/>
       <line num="6" count="1" type="stmt"/>
