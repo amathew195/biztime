@@ -1,3 +1,5 @@
+'use strict';
+
 /**Routes about companies */
 const express = require("express");
 
@@ -19,20 +21,31 @@ router.get('/', async function (req, res) {
   return res.json({ companies });
 });
 
-/**GET / - returns {companies: {company: {code, name, description}} */
+/**GET / - returns {company: {code, name, description, invoices: [id, ...]}} */
 router.get('/:code', async function (req, res) {
   const code = req.params.code;
-  const results = await db.query(
-    `
-    SELECT code, name, description
+
+  const cResults = await db.query(
+    `SELECT code, name, description
       FROM companies
         WHERE code = $1`,
     [code]
   );
 
-  const company = results.rows[0];
-
+  const company = cResults.rows[0];
   if (!company) throw new NotFoundError(`Not found: ${code}`);
+
+  const iResults = await db.query(
+    `SELECT i.id
+      FROM invoices as i
+      JOIN companies as c
+        ON i.comp_code = c.code
+      WHERE c.code = $1`,
+    [code]
+  );
+
+  company.invoices = iResults.rows.map(i => i.id);
+
   return res.json({ company });
 });
 
@@ -40,15 +53,15 @@ router.get('/:code', async function (req, res) {
  * - returns {companies: {company: {code, name, description}} */
 router.post('/', async function (req, res) {
 
-  if (req.body === undefined) throw new BadRequestError();
+  if (req.body === undefined) throw new BadRequestError('No data received');
 
   const requiredKeys = ['code', 'name', 'description'];
   const passedKeys = Object.keys(req.body);
 
-  if (passedKeys.length !== 3 ||
+  if (passedKeys.length !== requiredKeys.length ||
     !passedKeys.every(key => requiredKeys.includes(key))
   ) {
-    throw new BadRequestError();
+    throw new BadRequestError('Invalid JSON format');
   }
 
   const { code, name, description } = req.body;
@@ -70,15 +83,15 @@ router.post('/', async function (req, res) {
 /**PUT / - receives {name, description}
  * - returns {company: {code, name, description}} */
 router.put('/:code', async function (req, res) {
-  if (req.body === undefined) throw new BadRequestError();
+  if (req.body === undefined) throw new BadRequestError('No data received');
 
   const requiredKeys = ['name', 'description'];
   const passedKeys = Object.keys(req.body);
 
-  if (passedKeys.length !== 2 ||
+  if (passedKeys.length !== requiredKeys.length ||
     !passedKeys.every(key => requiredKeys.includes(key))
   ) {
-    throw new BadRequestError();
+    throw new BadRequestError('Invalid JSON format');
   }
 
   const code = req.params.code;
