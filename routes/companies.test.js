@@ -53,7 +53,7 @@ describe("GET /companies", function () {
 
 describe("GET /companies/:code", function () {
     test("Get a single company from DB", async function () {
-        const resp = await request(app).get("/companies/testCoCode");
+        const resp = await request(app).get(`/companies/${company.code}`);
         expect(resp.body).toEqual(
             {
                 company: {
@@ -128,7 +128,7 @@ describe("POST /companies", function () {
 describe("PUT /companies/:code", function () {
     test("Update existing company in DB", async function () {
         const resp = await request(app)
-            .put("/companies/testCoCode")
+            .put(`/companies/${company.code}`)
             .send({
                 "name": "newCoNameUpdate",
                 "description": "newCoDescriptionUpdate"
@@ -149,7 +149,7 @@ describe("PUT /companies/:code", function () {
 
     test("Invalid JSON format", async function () {
         const resp = await request(app)
-            .put("/companies/testCoCode")
+            .put(`/companies/${company.code}`)
             .send({
                 "code": "newCoCode",
                 "description": "newCoDescription"
@@ -172,6 +172,30 @@ describe("PUT /companies/:code", function () {
                 "name": "newCoNameUpdate",
                 "description": "newCoDescriptionUpdate"
             });
+        expect(resp.statusCode).toEqual(404);
+        expect(resp.body).toEqual(
+            {
+                "error": {
+                    "message": "Not found: invalidTestCo",
+                    "status": 404
+                }
+            }
+        );
+    });
+});
+
+describe("DELETE /companies/:code", function () {
+    test("Delete company in DB", async function () {
+        const resp = await request(app)
+            .delete(`/companies/${company.code}`);
+        expect(resp.statusCode).toEqual(200);
+        expect(resp.body).toEqual({ status: "deleted" }
+        );
+    });
+
+    test("Invalid company code", async function () {
+        const resp = await request(app)
+            .delete("/companies/invalidTestCo");
         expect(resp.statusCode).toEqual(404);
         expect(resp.body).toEqual(
             {
